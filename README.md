@@ -23,16 +23,15 @@ The application should be up and running at [http://localhost:5000](http://local
 
 Here are a few screenshots
 
-1. Posting some content
+1. Login Page
 
-![image.png](https://github.com/satwikkansal/python_blockchain_app/raw/master/screenshots/1.png)
+![image.png](https://github.com/ZiningW/Blockify/tree/master/screenshots/Login.png)
 
-2. Requesting the node to mine
+2. Track Selection Page
 
-![image.png](https://github.com/satwikkansal/python_blockchain_app/raw/master/screenshots/2.png)
+![image.png](https://github.com/ZiningW/Blockify/tree/master/screenshots/Music.png)
 
-3. Resyncing with the chain for updated data
+3. Block Explorer Page
 
-![image.png](https://github.com/satwikkansal/python_blockchain_app/raw/master/screenshots/3.png)
+![image.png](https://github.com/ZiningW/Blockify/tree/master/screenshots/Explorer.png)
 
-To play around by spinning off multiple custom nodes, use the `add_nodes/` endpoint to register a new node. To update the node with which the application syncs, change `CONNECTED_NODE_ADDRESS` field in the [views.py](https://github.com/satwikkansal/python_blockchain_app/blob/master/app/views.py) file.
