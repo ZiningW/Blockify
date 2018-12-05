@@ -25,13 +25,13 @@ Here are a few screenshots
 
 1. Login Page
 
-![image.png](https://github.com/ZiningW/Blockify/tree/master/screenshots/Login.png)
+![image.png](https://github.com/ZiningW/Blockify/raw/master/screenshots/Login.png)
 
 2. Track Selection Page
 
-![image.png](https://github.com/ZiningW/Blockify/tree/master/screenshots/Music.png)
+![image.png](https://github.com/ZiningW/Blockify/raw/master/screenshots/Music.png)
 
 3. Block Explorer Page
 
-![image.png](https://github.com/ZiningW/Blockify/tree/master/screenshots/Explorer.png)
+![image.png](https://github.com/ZiningW/Blockify/raw/master/screenshots/Explorer.png)
 
