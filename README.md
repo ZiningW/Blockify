@@ -4,6 +4,9 @@
 Adapted and modified based on satwikkansal/python_blockchain_app
 https://github.com/satwikkansal/python_blockchain_app
 
+## Note
+This is a proof of concept and should not be used in production
+
 
 ## Instructions to run
 
