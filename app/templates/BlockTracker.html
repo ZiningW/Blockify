@@ -1,0 +1,63 @@
+{% extends "frame.html" %}
+{% block body %}
+	<!-- <p>{{test}}</p> -->
+    <a href="/BlockTracker/"><button>Resync</button></a>
+
+    <div style="margin: 20px;"> 
+
+	<table style="width:100%">
+	  <tr>
+	  	<th>Block Number</th>
+	  	<th>Time Stamp</th>
+	    <th>Listener Hash (From)</th>
+	    <th>Artist Hash (To)</th> 
+	    <th>Block Hash</th>
+	    <th>Song Ownernship Hash</th>
+	    <th>Song</th>
+	    <th>Amount</th>
+	  </tr>
+
+	{% for post in posts %}
+
+
+	  <tr>
+	  	<td>{{post.index}}</td>
+	  	<td>{{readable_time(post.timestamp)}}</td>
+	    <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">{{post.listener}}</td>
+	    <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">{{post.artist}}</td> 
+	    <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">{{post.hash}}</td>
+	    <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:100px;">{{post.song_hash}}</td>
+	    <td>{{post.song}}</td>
+	    <td>{{post.amount}} Coins</td>
+	  </tr>
+
+	
+	{% endfor %}
+
+	</table>
+
+	<style>
+	
+	th {
+	    text-align: left;
+	}
+
+	tr:nth-child(even) {
+	    background-color: #f2f2f2
+	}
+
+	table,td {
+		border: none
+	}
+
+
+
+
+	</style>
+    </div>
+
+
+
+{% endblock %}
+
+

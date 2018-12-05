@@ -1,0 +1,69 @@
+{% extends "frame.html" %}
+{% block body %}
+
+    <tr>
+    
+    {% for song in songs %}
+        {% if song != ".DS_Store" %}
+
+    	<td>
+    		<form action="/submit" method="post" id = 'playSong' target="audioplayer">
+		    	<input type="submit" name = "song_name" value="{{song}}" onclick="document.getElementById('MineRequest').click()" id = "mine">
+			</form>	
+        </td>
+
+        {% endif %}
+
+    {% endfor %}
+
+    </tr>
+
+	<a href="{{node_address}}/mine" target="status"><button id = "MineRequest"></button></a>
+
+</head>
+
+<style type="text/css">
+
+    .inline {
+       display:inline-block;
+       margin-right:5px;
+    }
+
+    #MineRequest {
+    	background-color: #fff;
+    	border-color: #ffffff;
+    	border-style: solid;
+    }
+
+    #mine {
+        background-color: #333;
+        color: #fff;
+        font-size: 20px;
+        text-decoration: none;
+        cursor: poiner;
+        border:none;
+        padding: 10px;
+    }
+
+
+    #mine:hover {
+        border: none;
+        background:#1DB954;
+        box-shadow: 0px 0px 1px #777;
+        
+    }
+
+    input {
+        text-align: left;
+        position:relative;
+        width:1500px;
+        padding: 0;
+        background-color: #333;
+    
+    }
+
+
+</style>
+
+{% endblock %}
+

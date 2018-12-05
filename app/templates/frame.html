@@ -1,0 +1,112 @@
+<html>
+  
+  <head>
+
+    <title>{{ title }}</title>
+
+    <script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
+  </head>
+
+
+
+    <div align="right" id="pageAudio">CIVENG 290I Final Project</div>
+    
+    <div id="pageHeader">
+
+      <div id = "left">
+
+        <h1 style="display: inline;">Blockify - Blockchain Powered Music Streaming</h1><br></br>
+
+        <h2 style="display: inline;">{{ title }}</h1><br></br></h2>
+
+      </div>
+
+      <div id = "right">
+
+        <h3 style="text-align: right; display: inline;">User ID: {{ session['username'] }}</h1><br /><br />  
+
+        <h3 style="text-align: right; display: inline;">Wallet: {{session['user_wallet']}} Coins</h1><br /><br /> 
+
+        <a href="/music"><button id = "refresh_button">Refresh</button></a>
+
+      </div>
+
+    </div>
+
+    <div>
+      <ul id = "nav_panel">
+        <li><a href="/Logout">Logout</a> </li>
+        <li><a href="/music">Music Player</a></li>
+        <li><a href="/BlockTracker">Block Explorer</a></li>
+      </ul>
+
+    </div>
+
+    <div id="pageBody">
+
+      <div id="home" class="section" style="display:block;">{% block body %}{% endblock %}</div>
+
+    </div>
+
+    <style>
+        body {
+            background-color: #000000;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:14px;
+            }
+            
+            #left {
+                float:left;
+                display: inline;
+            }
+
+            #right {
+                float:right;
+                display: inline;
+            }
+
+            #pageHeader {
+                width:1500px; 
+                height: 100px; 
+                margin:auto; 
+                background-color: #F2F2F2; 
+                padding:10px;
+            }
+
+            #pageBody {
+                width:1500px; 
+                margin:auto; 
+                background-color:#FFF; 
+                padding:10px;
+            }
+
+            #nav_panel {
+                width:1500px;
+                list-style-type: none;
+                margin: auto;
+                padding: 0;
+                overflow: hidden;
+                background-color: #000;
+                padding:10px;
+            }
+
+            li {
+                float: left;
+            }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            /* Change the link color to #111 (black) on hover */
+            li a:hover {
+                background-color: #1DB954;
+            }
+
+            
+    </style>
+</html>

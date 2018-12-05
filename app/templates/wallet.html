@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wallet Tracker</title>
+</head>
+<body onload="JavaScript:timedRefresh(2500);"> 
+	<h4>Wallet Tracker (For Demo Only)</h1>
+	<table style="width:100%">
+	  <tr>
+	  	{% for user in users %}
+
+	  	<th>{{user}}</th>
+
+	  	{% endfor %}
+	  </tr>
+	  <tr>
+	  	{% for wallet in wallets %}
+
+	  	<td>{{wallet}}</td>
+
+	  	{% endfor %}
+	  </tr>
+
+</body>
+
+<script type="text/javascript">
+		function timedRefresh(timeoutPeriod) {
+	    setTimeout("location.reload(true);",timeoutPeriod);
+	}
+</script>
+<style>
+	
+	th{
+	    text-align: left;
+	}
+
+	tr:nth-child(even) {
+	    background-color: #f2f2f2
+	}
+
+	table,td {
+		border: none
+	}
+
+
+
+	</style>
+
+
+
+</html>
