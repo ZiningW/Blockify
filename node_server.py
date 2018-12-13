@@ -52,18 +52,8 @@ class Blockchain:
 	def __init__(self):
 		self.transaction_pending = list()
 		self.chain = list()
-		self.create_first_block()
 
-	@property
-	def last_block(self):
-		return self.chain[-1]
-
-	def create_first_block(self):
-		"""
-		generates the genesis block and append to the chain.
-		index = 0, previous_hash = 0
-		"""
-
+		# initialize the genesis block and append to the chain. index = 0, previous_hash = 0
 		first_block = Block(0, time.time(), 
 							[], "Not pointing to any music", 0)
 		
@@ -77,11 +67,15 @@ class Blockchain:
 		"""
 
 		#Check if previous block hash matches
-		if block.previous_hash != self.last_block.hash:
+		last_block = self.chain[-1]
+		if block.previous_hash != last_block.hash:
 			return False #"Previous block hash value does not match."
 
 		#Check if proof is valid
-		if not Blockchain.is_valid_proof(block, proof):
+		valid = proof.startswith("0" * Blockchain.difficulty)
+		valid =  (proof == block.block_hash())
+				
+		if not valid:
 			return False #"Not valid proof as it does not match block hash"
 
 		block.hash = proof
@@ -102,14 +96,6 @@ class Blockchain:
 
 		return block_hash
 
-	@classmethod
-	def is_valid_proof(cls, block, proof):
-		"""
-		verify if the proof is valid
-		"""
-		return (proof.startswith("0" * Blockchain.difficulty) and 
-				proof == block.block_hash())
-
 	def add_new_transaction(self, transaction):
 		self.transaction_pending.append(transaction)
 
@@ -122,8 +108,10 @@ class Blockchain:
 			block_hash = block.hash
 			delattr(block, "hash") #remove to recompute
 
-			if not cls.is_valid_proof(block, block_hash) or \
-					previous_hash != block.previous_hash:
+			valid = proof.startswith("0" * Blockchain.difficulty)
+			valid =  (proof == block.block_hash())
+
+			if not valid or previous_hash != block.previous_hash:
 				result =  False
 				break
 
@@ -138,17 +126,14 @@ class Blockchain:
 		if not self.transaction_pending:
 			return False #"no pending transaction awaiting"
 
-		last_block = self.last_block
-		new_block = Block(index=last_block.index+1,
+		new_block = Block(index=self.chain[-1].index+1,
 						timestamp=time.time(),
 						transaction=self.transaction_pending,
 						pointer=pointer,
-						previous_hash=last_block.hash)
-		t_0 = time.time()
+						previous_hash=self.chain[-1].hash)
+
 		proof = self.proof_of_work(new_block)
 		self.add_new_block(new_block, proof)
-		t_1 = time.time()
-		print("The time costs to generate a new block is: " + str(t_1 - t_0))
 
 		self.transaction_pending = list()
 		announce_new_block(new_block) #announce to the network
