@@ -47,7 +47,7 @@ class Blockchain:
 	Blockchain object for blockchain.
 	"""
 
-	difficulty = 2 #PoW algorithm difficulty
+	difficulty = 0 #PoW algorithm difficulty
 
 	def __init__(self):
 		self.transaction_pending = list()
@@ -144,9 +144,11 @@ class Blockchain:
 						transaction=self.transaction_pending,
 						pointer=pointer,
 						previous_hash=last_block.hash)
-
+		t_0 = time.time()
 		proof = self.proof_of_work(new_block)
 		self.add_new_block(new_block, proof)
+		t_1 = time.time()
+		print("The time costs to generate a new block is: " + str(t_1 - t_0))
 
 		self.transaction_pending = list()
 		announce_new_block(new_block) #announce to the network
